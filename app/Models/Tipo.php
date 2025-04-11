@@ -8,8 +8,8 @@ class Tipo extends Model
 {
     protected $fillable = ['nome'];
 
-    // public function transacoes()
-    // {
-    //     return $this->hasMany(Transacao::class);
-    // }
+    public function transacoes()
+    {
+        return $this->hasMany(Transacao::class);
+    }
 }

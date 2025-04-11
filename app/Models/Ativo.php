@@ -8,8 +8,8 @@ class Ativo extends Model
 {
     protected $fillable = ['codigo', 'descricao'];
 
-    // public function transacoes()
-    // {
-    //     return $this->hasMany(Transacao::class);
-    // }
+    public function transacoes()
+    {
+        return $this->hasMany(Transacao::class);
+    }
 }
