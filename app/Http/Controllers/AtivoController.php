@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreAtivoRequest;
+use App\Http\Requests\UpdateAtivoRequest;
 use App\Models\Ativo;
-use Illuminate\Http\Request;
 
 class AtivoController extends Controller
 {
@@ -12,13 +13,8 @@ class AtivoController extends Controller
         return Ativo::all();
     }
 
-    public function store(Request $request)
+    public function store(StoreAtivoRequest $request)
     {
-        $request->validate([
-            'codigo' => 'required|unique:ativos,codigo|max:6',
-            'descricao' => 'nullable|string|max:255',
-        ]);
-
         $ativo = Ativo::create($request->only('codigo', 'descricao'));
 
         return response()->json($ativo, 201);
@@ -29,13 +25,8 @@ class AtivoController extends Controller
         return $ativo;
     }
 
-    public function update(Request $request, Ativo $ativo)
+    public function update(UpdateAtivoRequest $request, Ativo $ativo)
     {
-        $request->validate([
-            'codigo' => 'required|max:6|unique:ativos,codigo,'.$ativo->id,
-            'descricao' => 'nullable|string|max:255',
-        ]);
-
         $ativo->update($request->only('codigo', 'descricao'));
 
         return $ativo;
