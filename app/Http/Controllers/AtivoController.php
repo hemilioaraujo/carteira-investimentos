@@ -15,7 +15,7 @@ class AtivoController extends Controller
 
     public function store(StoreAtivoRequest $request)
     {
-        $ativo = Ativo::create($request->only('codigo', 'descricao'));
+        $ativo = Ativo::create($request->only('codigo', 'descricao', 'cnpj'));
 
         return response()->json($ativo, 201);
     }
@@ -27,7 +27,7 @@ class AtivoController extends Controller
 
     public function update(UpdateAtivoRequest $request, Ativo $ativo)
     {
-        $ativo->update($request->only('codigo', 'descricao'));
+        $ativo->update($request->only('codigo', 'descricao', 'cnpj'));
 
         return $ativo;
     }

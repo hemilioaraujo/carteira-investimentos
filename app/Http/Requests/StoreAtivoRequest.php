@@ -24,6 +24,7 @@ class StoreAtivoRequest extends FormRequest
         return [
             'codigo' => ['required', 'unique:ativos,codigo', 'max:6'],
             'descricao' => ['nullable', 'string', 'max:255'],
+            'cnpj' => ['required', 'unique:ativos,cnpj', 'max:14'],
         ];
     }
 }

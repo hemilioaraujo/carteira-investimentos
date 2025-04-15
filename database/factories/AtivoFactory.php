@@ -19,6 +19,7 @@ class AtivoFactory extends Factory
         return [
             'codigo' => strtoupper($this->faker->unique()->bothify('???#')),
             'descricao' => $this->faker->company().' S.A.',
+            'cnpj' => $this->faker->unique()->regexify('[0-9]{14}'),
         ];
     }
 }

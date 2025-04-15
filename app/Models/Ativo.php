@@ -9,7 +9,7 @@ class Ativo extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['codigo', 'descricao'];
+    protected $fillable = ['codigo', 'descricao', 'cnpj'];
 
     public function transacoes()
     {

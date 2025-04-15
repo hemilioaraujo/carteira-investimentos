@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('descricao')->nullable();
+            $table->string('cnpj', 14);
             $table->timestamps();
         });
     }
