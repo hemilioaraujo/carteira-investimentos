@@ -28,7 +28,7 @@ class UpdateAtivoRequest extends FormRequest
                 'unique:ativos,codigo,'.$this->route('ativo')->id,
             ],
             'descricao' => ['nullable', 'string', 'max:255'],
-            'cnpj' => ['required',  'max:14', 'unique:ativos,cnpj,'.$this->route('ativo')->id],
+            'cnpj' => ['required',  'size:14', 'unique:ativos,cnpj,'.$this->route('ativo')->id],
         ];
     }
 }
