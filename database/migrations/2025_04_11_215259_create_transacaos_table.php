@@ -13,12 +13,13 @@ return new class extends Migration
     {
         Schema::create('transacoes', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('tipo_id')->constrained('tipos');
+            $table->foreignId('tipo_ordem_id')->constrained('tipos_ordens');
             $table->foreignId('corretora_id')->nullable()->constrained('corretoras');
             $table->foreignId('ativo_id')->constrained('ativos');
             $table->decimal('quantidade', 15, 4);
             $table->decimal('preco_unitario', 15, 4);
             $table->decimal('valor_total', 15, 4);
+            $table->date('data');
             $table->text('observacoes')->nullable();
             $table->timestamps();
         });

@@ -2,23 +2,27 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Transacao extends Model
 {
+    use HasFactory;
+
     protected $table = 'transacoes';
 
     protected $fillable = [
-        'tipo_id',
+        'tipo_ordem_id',
         'corretora_id',
         'ativo_id',
         'quantidade',
         'preco_unitario',
         'valor_total',
+        'data',
         'observacoes',
     ];
 
-    public function tipo()
+    public function tipoOrdem()
     {
         return $this->belongsTo(TipoOrdem::class);
     }

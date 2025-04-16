@@ -9,14 +9,14 @@ class TransacaoController extends Controller
 {
     public function index()
     {
-        return Transacao::with(['tipo', 'ativo', 'corretora'])->get();
+        return Transacao::with(['tipoOrdem', 'ativo', 'corretora'])->get();
     }
 
     public function store(Request $request)
     {
         $request->validate([
             'data' => 'required|date',
-            'tipo_id' => 'required|exists:tipos,id',
+            'tipo_ordem_id' => 'required|exists:tipos_ordens,id',
             'ativo_id' => 'required|exists:ativos,id',
             'quantidade' => 'required|numeric|min:0',
             'preco_unitario' => 'nullable|numeric|min:0',
@@ -25,21 +25,22 @@ class TransacaoController extends Controller
             'observacoes' => 'nullable|string',
         ]);
 
-        $transacao = Transacao::create($request->all());
+        $transaco = Transacao::create($request->all());
 
-        return response()->json($transacao->load(['tipo', 'ativo', 'corretora']), 201);
+        return response()->json($transaco->load(['tipoOrdem', 'ativo', 'corretora']), 201);
     }
 
-    public function show(Transacao $transacao)
+    public function show(Transacao $transaco)
     {
-        return $transacao->load(['tipo', 'ativo', 'corretora']);
+        return $transaco->load(['tipoOrdem', 'ativo', 'corretora']);
     }
 
-    public function update(Request $request, Transacao $transacao)
+    public function update(Request $request, Transacao $transaco)
     {
+
         $request->validate([
             'data' => 'required|date',
-            'tipo_id' => 'required|exists:tipos,id',
+            'tipo_ordem_id' => 'required|exists:tipos_ordens,id',
             'ativo_id' => 'required|exists:ativos,id',
             'quantidade' => 'required|numeric|min:0',
             'preco_unitario' => 'nullable|numeric|min:0',
@@ -48,14 +49,14 @@ class TransacaoController extends Controller
             'observacoes' => 'nullable|string',
         ]);
 
-        $transacao->update($request->all());
+        $transaco->update($request->all());
 
-        return $transacao->load(['tipo', 'ativo', 'corretora']);
+        return $transaco->load(['tipoOrdem', 'ativo', 'corretora']);
     }
 
-    public function destroy(Transacao $transacao)
+    public function destroy(Transacao $transaco)
     {
-        $transacao->delete();
+        $transaco->delete();
 
         return response()->json(null, 204);
     }
