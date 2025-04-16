@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('corretoras', function (Blueprint $table) {
             $table->id();
             $table->string('nome');
+            $table->string('cnpj', 14);
             $table->timestamps();
         });
     }

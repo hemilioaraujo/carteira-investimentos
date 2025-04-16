@@ -16,9 +16,10 @@ class CorretoraController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:100|unique:corretoras,nome',
+            'cnpj' => 'required|string|max:14|unique:corretoras,cnpj',
         ]);
 
-        $corretora = Corretora::create($request->only('nome'));
+        $corretora = Corretora::create($request->only('nome', 'cnpj'));
 
         return response()->json($corretora, 201);
     }
@@ -32,9 +33,10 @@ class CorretoraController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:100|unique:corretoras,nome,'.$corretora->id,
+            'cnpj' => 'required|string|max:14|unique:corretoras,cnpj,'.$corretora->id,
         ]);
 
-        $corretora->update($request->only('nome'));
+        $corretora->update($request->only('nome', 'cnpj'));
 
         return $corretora;
     }

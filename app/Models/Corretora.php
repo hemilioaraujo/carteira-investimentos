@@ -2,11 +2,14 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class Corretora extends Model
 {
-    protected $fillable = ['nome'];
+    use HasFactory;
+
+    protected $fillable = ['nome', 'cnpj'];
 
     public function transacoes()
     {
