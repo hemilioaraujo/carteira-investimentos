@@ -4,9 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Tipo extends Model
+class TipoOrdem extends Model
 {
     protected $fillable = ['nome'];
+
+    protected $table = 'tipos_ordens';
 
     public function transacoes()
     {

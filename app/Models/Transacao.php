@@ -20,7 +20,7 @@ class Transacao extends Model
 
     public function tipo()
     {
-        return $this->belongsTo(Tipo::class);
+        return $this->belongsTo(TipoOrdem::class);
     }
 
     public function corretora()
