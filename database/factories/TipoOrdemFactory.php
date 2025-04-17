@@ -17,7 +17,7 @@ class TipoOrdemFactory extends Factory
     public function definition(): array
     {
         return [
-            'nome' => $this->faker->unique()->randomElement(['Compra', 'Venda']),
+            'nome' => $this->faker->unique()->word(),
         ];
     }
 }

@@ -22,5 +22,12 @@ Route::prefix('/corretoras')->name('corretoras.')->group(function () {
     Route::delete('/{corretora}', [CorretoraController::class, 'destroy'])->name('destroy');
 });
 
-Route::apiResource('tiposOrdens', TipoOrdemController::class);
+Route::prefix('/tiposOrdens')->name('tipos-ordens.')->group(function () {
+    Route::get('', [TipoOrdemController::class, 'index'])->name('index');
+    Route::post('', [TipoOrdemController::class, 'store'])->name('store');
+    Route::get('/{tipoOrdem}', [TipoOrdemController::class, 'show'])->name('show');
+    Route::put('/{tipoOrdem}', [TipoOrdemController::class, 'update'])->name('update');
+    Route::delete('/{tipoOrdem}', [TipoOrdemController::class, 'destroy'])->name('destroy');
+});
+
 Route::apiResource('transacoes', TransacaoController::class);

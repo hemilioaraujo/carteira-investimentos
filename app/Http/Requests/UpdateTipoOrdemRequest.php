@@ -22,7 +22,7 @@ class UpdateTipoOrdemRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'nome' => ['required', 'string', 'max:100', 'unique:tipos_ordens,nome,'.$this->route('tiposOrden')->id],
+            'nome' => ['required', 'string', 'max:100', 'unique:tipos_ordens,nome,'.$this->route('tipoOrdem')->id],
         ];
     }
 }

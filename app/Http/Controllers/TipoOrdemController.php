@@ -15,26 +15,26 @@ class TipoOrdemController extends Controller
 
     public function store(StoreTipoOrdemRequest $request)
     {
-        $tiposOrden = TipoOrdem::create($request->only('nome'));
+        $tipoOrdem = TipoOrdem::create($request->only('nome'));
 
-        return response()->json($tiposOrden, 201);
+        return response()->json($tipoOrdem, 201);
     }
 
-    public function show(TipoOrdem $tiposOrden)
+    public function show(TipoOrdem $tipoOrdem)
     {
-        return $tiposOrden;
+        return $tipoOrdem;
     }
 
-    public function update(UpdateTipoOrdemRequest $request, TipoOrdem $tiposOrden)
+    public function update(UpdateTipoOrdemRequest $request, TipoOrdem $tipoOrdem)
     {
-        $tiposOrden->update($request->only('nome'));
+        $tipoOrdem->update($request->only('nome'));
 
-        return $tiposOrden;
+        return $tipoOrdem;
     }
 
-    public function destroy(TipoOrdem $tiposOrden)
+    public function destroy(TipoOrdem $tipoOrdem)
     {
-        $tiposOrden->delete();
+        $tipoOrdem->delete();
 
         return response()->json(null, 204);
     }

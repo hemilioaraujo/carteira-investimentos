@@ -28,7 +28,7 @@ class UpdateTipoOrdemRequestTest extends TestCase
 
             public function route($param = null, $default = null)
             {
-                return $param === 'tiposOrden' ? $this->tipoOrdem : null;
+                return $param === 'tipoOrdem' ? $this->tipoOrdem : null;
             }
         };
     }
