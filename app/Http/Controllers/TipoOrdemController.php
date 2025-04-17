@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreTipoOrdemRequest;
+use App\Http\Requests\UpdateTipoOrdemRequest;
 use App\Models\TipoOrdem;
-use Illuminate\Http\Request;
 
 class TipoOrdemController extends Controller
 {
@@ -12,12 +13,8 @@ class TipoOrdemController extends Controller
         return TipoOrdem::all();
     }
 
-    public function store(Request $request)
+    public function store(StoreTipoOrdemRequest $request)
     {
-        $request->validate([
-            'nome' => 'required|string|max:100|unique:tipos_ordens,nome',
-        ]);
-
         $tiposOrden = TipoOrdem::create($request->only('nome'));
 
         return response()->json($tiposOrden, 201);
@@ -28,12 +25,8 @@ class TipoOrdemController extends Controller
         return $tiposOrden;
     }
 
-    public function update(Request $request, TipoOrdem $tiposOrden)
+    public function update(UpdateTipoOrdemRequest $request, TipoOrdem $tiposOrden)
     {
-        $request->validate([
-            'nome' => 'required|string|max:100|unique:tipos_ordens,nome,'.$tiposOrden->id,
-        ]);
-
         $tiposOrden->update($request->only('nome'));
 
         return $tiposOrden;
