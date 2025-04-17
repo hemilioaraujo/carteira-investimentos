@@ -2,18 +2,17 @@
 
 namespace Tests\Unit;
 
-use Tests\TestCase;
+use App\Http\Requests\StoreTransacaoRequest;
 use App\Models\Ativo;
 use App\Models\Corretora;
 use App\Models\TipoOrdem;
-use Illuminate\Support\Facades\Validator;
-use App\Http\Requests\StoreTransacaoRequest;
-use PHPUnit\Framework\Attributes\DataProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
+use Illuminate\Support\Facades\Validator;
+use Tests\TestCase;
 
 class UpdateTransacaoRequestTest extends TestCase
 {
-   use RefreshDatabase;
+    use RefreshDatabase;
 
     private TipoOrdem $tipoOrdem;
 

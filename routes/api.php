@@ -14,6 +14,13 @@ Route::prefix('/ativos')->name('ativos.')->group(function () {
     Route::delete('/{ativo}', [AtivoController::class, 'destroy'])->name('destroy');
 });
 
-Route::apiResource('corretoras', CorretoraController::class);
+Route::prefix('/corretoras')->name('corretoras.')->group(function () {
+    Route::get('', [CorretoraController::class, 'index'])->name('index');
+    Route::post('', [CorretoraController::class, 'store'])->name('store');
+    Route::get('/{corretora}', [CorretoraController::class, 'show'])->name('show');
+    Route::put('/{corretora}', [CorretoraController::class, 'update'])->name('update');
+    Route::delete('/{corretora}', [CorretoraController::class, 'destroy'])->name('destroy');
+});
+
 Route::apiResource('tiposOrdens', TipoOrdemController::class);
 Route::apiResource('transacoes', TransacaoController::class);
