@@ -15,26 +15,26 @@ class TransacaoController extends Controller
 
     public function store(StoreTransacaoRequest $request)
     {
-        $transaco = Transacao::create($request->all());
+        $transacao = Transacao::create($request->all());
 
-        return response()->json($transaco->load(['tipoOrdem', 'ativo', 'corretora']), 201);
+        return response()->json($transacao->load(['tipoOrdem', 'ativo', 'corretora']), 201);
     }
 
-    public function show(Transacao $transaco)
+    public function show(Transacao $transacao)
     {
-        return $transaco->load(['tipoOrdem', 'ativo', 'corretora']);
+        return $transacao->load(['tipoOrdem', 'ativo', 'corretora']);
     }
 
-    public function update(UpdateTransacaoRequest $request, Transacao $transaco)
+    public function update(UpdateTransacaoRequest $request, Transacao $transacao)
     {
-        $transaco->update($request->all());
+        $transacao->update($request->all());
 
-        return $transaco->load(['tipoOrdem', 'ativo', 'corretora']);
+        return $transacao->load(['tipoOrdem', 'ativo', 'corretora']);
     }
 
-    public function destroy(Transacao $transaco)
+    public function destroy(Transacao $transacao)
     {
-        $transaco->delete();
+        $transacao->delete();
 
         return response()->json(null, 204);
     }

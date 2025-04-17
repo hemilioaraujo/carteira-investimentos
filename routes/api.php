@@ -30,4 +30,10 @@ Route::prefix('/tiposOrdens')->name('tipos-ordens.')->group(function () {
     Route::delete('/{tipoOrdem}', [TipoOrdemController::class, 'destroy'])->name('destroy');
 });
 
-Route::apiResource('transacoes', TransacaoController::class);
+Route::prefix('/transacoes')->name('transacoes.')->group(function () {
+    Route::get('', [TransacaoController::class, 'index'])->name('index');
+    Route::post('', [TransacaoController::class, 'store'])->name('store');
+    Route::get('/{transacao}', [TransacaoController::class, 'show'])->name('show');
+    Route::put('/{transacao}', [TransacaoController::class, 'update'])->name('update');
+    Route::delete('/{transacao}', [TransacaoController::class, 'destroy'])->name('destroy');
+});

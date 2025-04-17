@@ -25,7 +25,7 @@ class TransacaoFactory extends Factory
             'ativo_id' => Ativo::factory(),
             'quantidade' => $quantidade = $this->faker->randomNumber(3),
             'preco_unitario' => $precoUnitario = $this->faker->randomFloat(2, 0, 100),
-            'valor_total' => $quantidade * $precoUnitario,
+            'valor_total' => round($quantidade * $precoUnitario, 2),
             'data' => $this->faker->date(),
             'observacoes' => $this->faker->sentence(),
         ];
