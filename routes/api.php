@@ -2,9 +2,12 @@
 
 use App\Http\Controllers\AtivoController;
 use App\Http\Controllers\CorretoraController;
+use App\Http\Controllers\RelatorioController;
 use App\Http\Controllers\TipoOrdemController;
 use App\Http\Controllers\TransacaoController;
 use Illuminate\Support\Facades\Route;
+
+Route::get('/relatorios', [RelatorioController::class, 'index'])->name('home');
 
 Route::prefix('/ativos')->name('ativos.')->group(function () {
     Route::get('', [AtivoController::class, 'index'])->name('index');
